@@ -13,10 +13,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
+      theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.white)),
+      home: Scaffold(
+        appBar: AppBar(title: const Text("Kalkylator"),),
+        backgroundColor: Colors.white,
+        body: SafeArea(child: HomePage()),
       ),
-      home: const HomePage(),
     );
   }
 }
