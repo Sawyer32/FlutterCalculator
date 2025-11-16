@@ -34,7 +34,7 @@ class Keypad extends StatelessWidget {
         CalcButton(text: "3", onTap: () => onPressed("3")),
         CalcButton(text: "x", onTap: () => onPressed("x"), color: Colors.pinkAccent),
 
-        CalcButton(text: ".", onTap: () => onPressed(",")),   // TOM ruta i designen
+        CalcButton(text: ".", onTap: () => onPressed(",")),
         CalcButton(text: "0", onTap: () => onPressed("0")),
         CalcButton(text: "=", onTap: () => onPressed("=")),
         CalcButton(text: "+", onTap: () => onPressed("+"), color: Colors.pinkAccent),
