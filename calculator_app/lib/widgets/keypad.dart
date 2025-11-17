@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'calc_button.dart';
 
 class Keypad extends StatelessWidget {
-  const Keypad ({super.key, required this.onPressed});
+  const Keypad ({super.key, required this.onPressed, required this.onCalculate});
   final void Function(String) onPressed;
+  final void Function() onCalculate;
 
   @override
   Widget build(BuildContext context) {
@@ -14,11 +15,6 @@ class Keypad extends StatelessWidget {
       mainAxisSpacing: 12,
       crossAxisSpacing: 12,
       children: [
-        CalcButton(text: "C", onTap: () => onPressed("C")),
-        CalcButton(text: "CE", onTap: () => onPressed("CE")),
-        CalcButton(text: "", onTap: () => {}, color: Colors.white),
-        CalcButton(text: "", onTap: () => {}, color: Colors.white),
-
         CalcButton(text: "7", onTap: () => onPressed("7")),
         CalcButton(text: "8", onTap: () => onPressed("8")),
         CalcButton(text: "9", onTap: () => onPressed("9")),
@@ -36,7 +32,7 @@ class Keypad extends StatelessWidget {
 
         CalcButton(text: ".", onTap: () => onPressed(",")),
         CalcButton(text: "0", onTap: () => onPressed("0")),
-        CalcButton(text: "=", onTap: () => onPressed("=")),
+        CalcButton(text: "=", onTap: onCalculate),
         CalcButton(text: "+", onTap: () => onPressed("+"), color: Colors.pinkAccent),
       ],
     );
