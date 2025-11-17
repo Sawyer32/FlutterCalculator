@@ -1,6 +1,6 @@
 import 'package:math_expressions/math_expressions.dart';
 
-double evaluateExpression(String expression) {
+num evaluateExpression(String expression) {
   expression = expression.replaceAll("x", "*");
 
   var parser = GrammarParser();
@@ -15,5 +15,9 @@ double evaluateExpression(String expression) {
     throw new Exception("Invalid expression");
   }
 
-  return result.toDouble();
+  if (result % 1 == 0) {
+    return result.toInt();
+  } else {
+    return result;
+  }
 }

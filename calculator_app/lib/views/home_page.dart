@@ -14,11 +14,14 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   String expressionText = "0";
   String? resolutionText;
+  bool calculated = false;
 
   void handleKeypadPress(String value) {
     setState(() {
-      if (expressionText == "0") {
+      if (expressionText == "0" || calculated) {
         expressionText = value;
+        calculated = false;
+        resolutionText = null;
       } else {
         expressionText += value;
       }
@@ -28,10 +31,11 @@ class _HomePageState extends State<HomePage> {
   void onCalculate() {
     String expression = expressionText;
     try {
-      double res = evaluateExpression(expressionText);
+      num res = evaluateExpression(expressionText);
       setState(() {
         expressionText = res.toString();
         resolutionText = expression;
+        calculated = true;
       });
     } catch (e) {
       setState(() {
