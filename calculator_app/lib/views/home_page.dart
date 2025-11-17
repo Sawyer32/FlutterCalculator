@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:calculator_app/utils/expression_handler.dart';
 import 'package:calculator_app/widgets/display_result.dart';
 import 'package:calculator_app/widgets/keypad.dart';
