@@ -20,6 +20,4 @@ num evaluateExpression(String expression) {
   } else {
     return result;
   }
-
-  return result.toDouble();
 }
