@@ -9,11 +9,14 @@ class Keypad extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final isSmallScreen = size.width < 600;
+    final spacing = isSmallScreen ? 7.0 : 12.0;
     return GridView.count(
       shrinkWrap: true,
       crossAxisCount: 4,
-      mainAxisSpacing: 12,
-      crossAxisSpacing: 12,
+      mainAxisSpacing: spacing,
+      crossAxisSpacing: spacing,
       children: [
         CalcButton(text: "7", onTap: () => onPressed("7")),
         CalcButton(text: "8", onTap: () => onPressed("8")),
