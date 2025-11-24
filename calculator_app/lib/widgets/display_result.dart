@@ -8,6 +8,9 @@ class DisplayResult extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final fontSize = size.width < 600 ? 32.0 : 40.0;
+    
     return Expanded(
       child: Align(
         alignment: Alignment.centerRight,
@@ -16,16 +19,16 @@ class DisplayResult extends StatelessWidget {
           children: [
             Text(
               expression ?? "123",
-              style: const TextStyle(
-                fontSize: 48,
+              style: TextStyle(
+                fontSize: fontSize,
                 fontWeight: FontWeight.bold,
                 color: Colors.grey,
               ),
             ),
             Text(
               result ?? '',
-              style: const TextStyle(
-                fontSize: 32,
+              style: TextStyle(
+                fontSize: fontSize,
                 fontWeight: FontWeight.bold,
                 fontStyle: FontStyle.italic,
                 color: Colors.grey,

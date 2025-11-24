@@ -8,6 +8,8 @@ class TransparentButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final fontSize = size.width < 600 ? 24.0 : 32.0;
     if (icon != null) {
       return GestureDetector(
         onTap: onTap,
@@ -24,7 +26,7 @@ class TransparentButton extends StatelessWidget {
           child: Text(
             text,
             style: TextStyle(
-              fontSize: 32,
+              fontSize: fontSize,
               fontWeight: FontWeight.w600,
               color: Colors.grey[500],
             ),

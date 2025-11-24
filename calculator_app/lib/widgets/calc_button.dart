@@ -10,6 +10,8 @@ class CalcButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final fontSize = size.width < 600 ? 24.0 : 32.0;
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -21,7 +23,7 @@ class CalcButton extends StatelessWidget {
           child: Text(
             text,
             style: TextStyle(
-              fontSize: 32,
+              fontSize: fontSize,
               fontWeight: FontWeight.w600,
             ),
           ),
