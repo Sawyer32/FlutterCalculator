@@ -1,10 +1,10 @@
 import 'package:math_expressions/math_expressions.dart';
 
-num evaluateExpression(String expression) {
-  expression = expression.replaceAll("x", "*");
+num evaluateExpression(String input) {
+  input = input.replaceAll("x", "*");
 
   var parser = GrammarParser();
-  Expression exp = parser.parse(expression);
+  Expression exp = parser.parse(input);
 
   var context = ContextModel();
   var evaluator = RealEvaluator(context);
@@ -12,7 +12,7 @@ num evaluateExpression(String expression) {
   num result = evaluator.evaluate(exp);
 
   if (result.isInfinite) {
-    throw new Exception("Invalid expression");
+    throw Exception("Invalid expression");
   }
 
   if (result % 1 == 0) {
