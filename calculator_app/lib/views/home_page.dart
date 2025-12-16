@@ -42,7 +42,13 @@ class _HomePageState extends State<HomePage> {
         expressionText = res.toString();
         resolutionText = expression;
         calculated = true;
-        calculationHistory.add(HistoryItem(result: res.toString(), expression: resolutionText!, date: getCurrentDate()));
+        calculationHistory.add(
+          HistoryItem(
+            result: res.toString(),
+            expression: resolutionText!,
+            date: getCurrentDate(),
+          ),
+        );
       });
     } catch (e) {
       setState(() {
@@ -75,31 +81,65 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-        children: [
-          Padding(
-            padding: EdgeInsets.all(20),
-            child: Column(
-              children: [
-                DisplayResult(expression: expressionText, result: resolutionText,),
-                Row(
-                  spacing: 20,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        TransparentButton(text: "C", onTap: onClear ),
-                        TransparentButton(text: "CE", onTap: onClearEntry ),
-                      ],
-                    ),
-                    HistoryWidget(history: calculationHistory, onClearHistory: onClearHistory,)
-                  ],
+    final horizontalPadding = 20.0;
+    final verticalPadding = 20.0;
+
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Center(
+        child: Column(
+          children: [
+            Expanded(
+              flex: 2,
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(
+                  horizontalPadding,
+                  verticalPadding,
+                  horizontalPadding,
+                  8.0,
                 ),
-                Keypad(onPressed: handleKeypadPress, onCalculate: onCalculate,)
-              ],
-            )
+                child: DisplayResult(
+                  expression: expressionText,
+                  result: resolutionText,
+                ),
+              ),
+            ),
+            SizedBox(height: 15.0),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: horizontalPadding,
+                vertical: 9.0,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      TransparentButton(text: "C", onTap: onClear),
+                      SizedBox(width: 8),
+                      TransparentButton(text: "CE", onTap: onClearEntry),
+                    ],
+                  ),
+                  HistoryWidget(
+                    history: calculationHistory,
+                    onClearHistory: onClearHistory,
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              flex: 3,
+              child: Padding(
+                padding: EdgeInsets.all(horizontalPadding),
+                child: Keypad(
+                  onPressed: handleKeypadPress,
+                  onCalculate: onCalculate,
+                ),
+              ),
+            ),
+          ],
         ),
-    ],
+      ),
     );
   }
 }

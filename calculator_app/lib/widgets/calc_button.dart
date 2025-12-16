@@ -10,8 +10,19 @@ class CalcButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    final fontSize = size.width < 600 ? 24.0 : 32.0;
+    // GridView controls the child size via constraints; explicit width is ignored.
+    // Size text responsively using available constraints.
+    final screenWidth = MediaQuery.of(context).size.width;
+    double fontSize;
+    if (screenWidth < 600) {
+      fontSize = 20.0;
+    } else if (screenWidth < 900) {
+      fontSize = 24.0;
+    } else if (screenWidth > 1500) {
+      fontSize = 99.0;
+    } else {
+      fontSize = 26.0;
+    }
     return GestureDetector(
       onTap: onTap,
       child: Container(
